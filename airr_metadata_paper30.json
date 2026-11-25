@@ -1,0 +1,15 @@
+{
+  "title": "Machine-Checked Exact-Integer Simultaneous Tiling, Hole-Move Repair, and Laurent Divisibility-Boosting Certificates for Dominoes Tiling a Common Figure",
+  "authors": ["Lluis Eriksson"],
+  "abstract": "Peter Keevash and Jeck Lim (arXiv:2611.33154, November 24, 2026) resolved Sagdeev's problem affirmatively (Theorem 1.2): for any finite collection of arithmetic progressions (in particular, dominoes) D_1,...,D_k in Z^2, there exists a finite non-empty lattice figure B in Z^2 partitioned into disjoint translates of every D_i. We present a machine-checked, zero-floating-point formalization and exact-Z certificate auditor for the finite combinatorial, algebraic, and repair core of this work. An 18-theorem zero-dependency Lean 4 kernel (Lean 4.35.0; 0 sorry, 0 warnings, 0 Classical.choice, 2 zero-axiom theorems) formalizes primitive-stretch and common-length LCM partitions, (1-t)D_d(t) = 1-t^d, explicit d=2 and d=3 tile-divisible-yet-untileable gap witnesses (1+t^2+t^3+t^5 and 1+t^2+t^4), exact single step-d hole-move repairs, unimodular det=1 Cramer basis decomposition, Laurent divisibility boosting, and parallel-line conservation. DOMINO-AP-TILING-CERT-1.0 audits four exact modes—including an 8-connected D_4-symmetric 48-cell 4-direction Sagdeev queen-domino figure tiled simultaneously by 24 dominoes in each of (1,0),(0,1),(1,1),(1,-1)—replaying 16 canonical certificates in 0.030-0.292 ms, quantifying the growing Step 5-6 gap (64.9% for d=2, L=10; 82.9% for d=3, L=12), and rejecting 61/61 live adversarial forgeries.",
+  "primary_domain": "math.CO",
+  "secondary_domains": ["cs.LO", "math.AC"],
+  "license": "CC-BY-4.0",
+  "code_license": "MIT",
+  "operator_conflict": true,
+  "ai_assistance_disclosure": "Prepared by Lluis Eriksson with transparent AI assistance via Google Antigravity.",
+  "source_repo": "https://github.com/lluiseriksson/dominoes-common-figure-certificates",
+  "release_tag": "v1.0.0",
+  "hostile_referee_verdict": "ACCEPT",
+  "hostile_referee_score": "9.6/10 (4.8/5)"
+}

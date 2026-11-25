@@ -1,0 +1,92 @@
+{
+  "schema": "DOMINO-AP-TILING-CERT-1.0",
+  "mode": "ap_primitive_lcm_reduction_exact",
+  "name": "mode4_tikhomirov_d5_gap",
+  "raw_aps": [
+    {
+      "direction": [
+        1,
+        0
+      ],
+      "length_d": 2
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "length_d": 2
+    },
+    {
+      "direction": [
+        1,
+        1
+      ],
+      "length_d": 2
+    },
+    {
+      "direction": [
+        1,
+        -1
+      ],
+      "length_d": 2
+    },
+    {
+      "direction": [
+        2,
+        0
+      ],
+      "length_d": 2
+    }
+  ],
+  "claimed_primitive_aps": [
+    {
+      "direction": [
+        1,
+        0
+      ],
+      "scale_c": 1,
+      "stretched_d": 2
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "scale_c": 1,
+      "stretched_d": 2
+    },
+    {
+      "direction": [
+        1,
+        1
+      ],
+      "scale_c": 1,
+      "stretched_d": 2
+    },
+    {
+      "direction": [
+        1,
+        -1
+      ],
+      "scale_c": 1,
+      "stretched_d": 2
+    },
+    {
+      "direction": [
+        1,
+        0
+      ],
+      "scale_c": 2,
+      "stretched_d": 4
+    }
+  ],
+  "claimed_common_length": 4,
+  "claimed_tile_counts": [
+    2,
+    2,
+    2,
+    2,
+    1
+  ]
+}

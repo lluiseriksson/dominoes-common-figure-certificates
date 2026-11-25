@@ -1,0 +1,41 @@
+{
+  "experiment": "exp4_boosting_lift_stats",
+  "rows": [
+    {
+      "name": "boost_d2_1prev_diag",
+      "length_d": 2,
+      "num_prev_dirs": 1,
+      "f_terms": 6,
+      "F_star_terms": 2,
+      "F_lifted_terms": 2,
+      "boosted_l1": 8
+    },
+    {
+      "name": "boost_d3_1prev_shear",
+      "length_d": 3,
+      "num_prev_dirs": 1,
+      "f_terms": 8,
+      "F_star_terms": 2,
+      "F_lifted_terms": 2,
+      "boosted_l1": 8
+    },
+    {
+      "name": "boost_d2_2prev_queens",
+      "length_d": 2,
+      "num_prev_dirs": 2,
+      "f_terms": 10,
+      "F_star_terms": 3,
+      "F_lifted_terms": 4,
+      "boosted_l1": 6
+    },
+    {
+      "name": "boost_d2_3prev_4dir",
+      "length_d": 2,
+      "num_prev_dirs": 3,
+      "f_terms": 8,
+      "F_star_terms": 4,
+      "F_lifted_terms": 8,
+      "boosted_l1": 8
+    }
+  ]
+}

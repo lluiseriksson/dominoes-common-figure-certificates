@@ -1,0 +1,20 @@
+import DominoesCommonFigure
+
+#print axioms DominoesCommonFigure.ap_tiling_cardinality_divisible
+#print axioms DominoesCommonFigure.standard_2x2_square_tiled_both
+#print axioms DominoesCommonFigure.ap_primitive_stretch_partition
+#print axioms DominoesCommonFigure.ap_lcm_common_length_divides
+#print axioms DominoesCommonFigure.laurent_ap_poly_eval_one
+#print axioms DominoesCommonFigure.laurent_ap_poly_times_diff_telescope
+#print axioms DominoesCommonFigure.laurent_domino_checkerboard_balance
+#print axioms DominoesCommonFigure.tile_divisible_gap_witness_d2
+#print axioms DominoesCommonFigure.tile_divisible_gap_witness_d3
+#print axioms DominoesCommonFigure.hole_move_step_d_preserves_mod_d
+#print axioms DominoesCommonFigure.hole_move_repairs_d2_gap
+#print axioms DominoesCommonFigure.hole_move_repairs_d3_gap
+#print axioms DominoesCommonFigure.unimodular_basis_change_det_one
+#print axioms DominoesCommonFigure.divisibility_boost_transitivity
+#print axioms DominoesCommonFigure.mod_Xd_minus_1_lift_congruence
+#print axioms DominoesCommonFigure.minkowski_product_tiling_div
+#print axioms DominoesCommonFigure.common_figure_lcm_divides_size
+#print axioms DominoesCommonFigure.line_partition_sum_conservation

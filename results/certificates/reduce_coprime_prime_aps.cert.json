@@ -1,0 +1,60 @@
+{
+  "schema": "DOMINO-AP-TILING-CERT-1.0",
+  "mode": "ap_primitive_lcm_reduction_exact",
+  "name": "mode4_coprime_235",
+  "raw_aps": [
+    {
+      "direction": [
+        1,
+        0
+      ],
+      "length_d": 2
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "length_d": 3
+    },
+    {
+      "direction": [
+        2,
+        1
+      ],
+      "length_d": 5
+    }
+  ],
+  "claimed_primitive_aps": [
+    {
+      "direction": [
+        1,
+        0
+      ],
+      "scale_c": 1,
+      "stretched_d": 2
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "scale_c": 1,
+      "stretched_d": 3
+    },
+    {
+      "direction": [
+        2,
+        1
+      ],
+      "scale_c": 1,
+      "stretched_d": 5
+    }
+  ],
+  "claimed_common_length": 30,
+  "claimed_tile_counts": [
+    15,
+    10,
+    6
+  ]
+}

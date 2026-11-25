@@ -1,0 +1,75 @@
+{
+  "schema": "DOMINO-AP-TILING-CERT-1.0",
+  "mode": "common_figure_ap_tiling_exact",
+  "name": "mode1_2x3_mixed_ap_d2_d3",
+  "figure_cells": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "aps": [
+    {
+      "direction": [
+        1,
+        0
+      ],
+      "length_d": 2
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "length_d": 3
+    }
+  ],
+  "tiling_origins": [
+    [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ]
+  ],
+  "claimed_num_cells": 6,
+  "claimed_lcm_d": 6
+}

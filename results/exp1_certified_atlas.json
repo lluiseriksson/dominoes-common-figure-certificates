@@ -1,0 +1,224 @@
+{
+  "experiment": "exp1_certified_atlas",
+  "count": 16,
+  "rows": [
+    {
+      "file": "fig_2x2_standard_dominoes.cert.json",
+      "mode": "common_figure_ap_tiling_exact",
+      "verify_ms": 0.06,
+      "summary": {
+        "verified": true,
+        "mode": "common_figure_ap_tiling_exact",
+        "num_cells": 4,
+        "num_aps": 2,
+        "lcm_d": 2
+      }
+    },
+    {
+      "file": "fig_2x3_mixed_ap23.cert.json",
+      "mode": "common_figure_ap_tiling_exact",
+      "verify_ms": 0.057,
+      "summary": {
+        "verified": true,
+        "mode": "common_figure_ap_tiling_exact",
+        "num_cells": 6,
+        "num_aps": 2,
+        "lcm_d": 6
+      }
+    },
+    {
+      "file": "fig_8cell_3dir_knight.cert.json",
+      "mode": "common_figure_ap_tiling_exact",
+      "verify_ms": 0.066,
+      "summary": {
+        "verified": true,
+        "mode": "common_figure_ap_tiling_exact",
+        "num_cells": 8,
+        "num_aps": 3,
+        "lcm_d": 2
+      }
+    },
+    {
+      "file": "fig_48cell_4dir_sagdeev.cert.json",
+      "mode": "common_figure_ap_tiling_exact",
+      "verify_ms": 0.292,
+      "summary": {
+        "verified": true,
+        "mode": "common_figure_ap_tiling_exact",
+        "num_cells": 48,
+        "num_aps": 4,
+        "lcm_d": 2
+      }
+    },
+    {
+      "file": "gap_repair_d2_single.cert.json",
+      "mode": "tile_divisible_vs_tileable_exact",
+      "verify_ms": 0.039,
+      "summary": {
+        "verified": true,
+        "mode": "tile_divisible_vs_tileable_exact",
+        "length_d": 2,
+        "num_cells": 4,
+        "num_hole_moves": 1,
+        "initial_min_q": -1,
+        "repaired_min_q": 0
+      }
+    },
+    {
+      "file": "gap_repair_d3_single.cert.json",
+      "mode": "tile_divisible_vs_tileable_exact",
+      "verify_ms": 0.033,
+      "summary": {
+        "verified": true,
+        "mode": "tile_divisible_vs_tileable_exact",
+        "length_d": 3,
+        "num_cells": 3,
+        "num_hole_moves": 1,
+        "initial_min_q": -1,
+        "repaired_min_q": 1
+      }
+    },
+    {
+      "file": "gap_repair_d2_double.cert.json",
+      "mode": "tile_divisible_vs_tileable_exact",
+      "verify_ms": 0.04,
+      "summary": {
+        "verified": true,
+        "mode": "tile_divisible_vs_tileable_exact",
+        "length_d": 2,
+        "num_cells": 6,
+        "num_hole_moves": 2,
+        "initial_min_q": -2,
+        "repaired_min_q": 0
+      }
+    },
+    {
+      "file": "gap_repair_d4_double.cert.json",
+      "mode": "tile_divisible_vs_tileable_exact",
+      "verify_ms": 0.03,
+      "summary": {
+        "verified": true,
+        "mode": "tile_divisible_vs_tileable_exact",
+        "length_d": 4,
+        "num_cells": 4,
+        "num_hole_moves": 1,
+        "initial_min_q": -1,
+        "repaired_min_q": 1
+      }
+    },
+    {
+      "file": "boost_d2_1prev_diag.cert.json",
+      "mode": "divisibility_boosting_lift_exact",
+      "verify_ms": 0.073,
+      "summary": {
+        "verified": true,
+        "mode": "divisibility_boosting_lift_exact",
+        "length_d": 2,
+        "num_prev_dirs": 1,
+        "boosted_l1": 8
+      }
+    },
+    {
+      "file": "boost_d3_1prev_shear.cert.json",
+      "mode": "divisibility_boosting_lift_exact",
+      "verify_ms": 0.069,
+      "summary": {
+        "verified": true,
+        "mode": "divisibility_boosting_lift_exact",
+        "length_d": 3,
+        "num_prev_dirs": 1,
+        "boosted_l1": 8
+      }
+    },
+    {
+      "file": "boost_d2_2prev_queens.cert.json",
+      "mode": "divisibility_boosting_lift_exact",
+      "verify_ms": 0.085,
+      "summary": {
+        "verified": true,
+        "mode": "divisibility_boosting_lift_exact",
+        "length_d": 2,
+        "num_prev_dirs": 2,
+        "boosted_l1": 6
+      }
+    },
+    {
+      "file": "boost_d2_3prev_4dir.cert.json",
+      "mode": "divisibility_boosting_lift_exact",
+      "verify_ms": 0.109,
+      "summary": {
+        "verified": true,
+        "mode": "divisibility_boosting_lift_exact",
+        "length_d": 2,
+        "num_prev_dirs": 3,
+        "boosted_l1": 8
+      }
+    },
+    {
+      "file": "reduce_gap_domino_d5.cert.json",
+      "mode": "ap_primitive_lcm_reduction_exact",
+      "verify_ms": 0.054,
+      "summary": {
+        "verified": true,
+        "mode": "ap_primitive_lcm_reduction_exact",
+        "num_aps": 5,
+        "common_length_L": 4,
+        "tile_counts": [
+          2,
+          2,
+          2,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "file": "reduce_mixed_aps_234.cert.json",
+      "mode": "ap_primitive_lcm_reduction_exact",
+      "verify_ms": 0.036,
+      "summary": {
+        "verified": true,
+        "mode": "ap_primitive_lcm_reduction_exact",
+        "num_aps": 3,
+        "common_length_L": 12,
+        "tile_counts": [
+          6,
+          4,
+          3
+        ]
+      }
+    },
+    {
+      "file": "reduce_scaled_vectors.cert.json",
+      "mode": "ap_primitive_lcm_reduction_exact",
+      "verify_ms": 0.036,
+      "summary": {
+        "verified": true,
+        "mode": "ap_primitive_lcm_reduction_exact",
+        "num_aps": 3,
+        "common_length_L": 12,
+        "tile_counts": [
+          3,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "file": "reduce_coprime_prime_aps.cert.json",
+      "mode": "ap_primitive_lcm_reduction_exact",
+      "verify_ms": 0.033,
+      "summary": {
+        "verified": true,
+        "mode": "ap_primitive_lcm_reduction_exact",
+        "num_aps": 3,
+        "common_length_L": 30,
+        "tile_counts": [
+          15,
+          10,
+          6
+        ]
+      }
+    }
+  ]
+}

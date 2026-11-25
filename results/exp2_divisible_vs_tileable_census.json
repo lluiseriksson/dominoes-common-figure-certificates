@@ -1,0 +1,54 @@
+{
+  "experiment": "exp2_divisible_vs_tileable_census",
+  "rows": [
+    {
+      "length_d": 2,
+      "box_L": 4,
+      "divisible_count": 5,
+      "tileable_count": 4,
+      "strict_gap_count": 1
+    },
+    {
+      "length_d": 2,
+      "box_L": 6,
+      "divisible_count": 19,
+      "tileable_count": 12,
+      "strict_gap_count": 7
+    },
+    {
+      "length_d": 2,
+      "box_L": 8,
+      "divisible_count": 69,
+      "tileable_count": 33,
+      "strict_gap_count": 36
+    },
+    {
+      "length_d": 2,
+      "box_L": 10,
+      "divisible_count": 251,
+      "tileable_count": 88,
+      "strict_gap_count": 163
+    },
+    {
+      "length_d": 3,
+      "box_L": 6,
+      "divisible_count": 9,
+      "tileable_count": 5,
+      "strict_gap_count": 4
+    },
+    {
+      "length_d": 3,
+      "box_L": 9,
+      "divisible_count": 55,
+      "tileable_count": 18,
+      "strict_gap_count": 37
+    },
+    {
+      "length_d": 3,
+      "box_L": 12,
+      "divisible_count": 345,
+      "tileable_count": 59,
+      "strict_gap_count": 286
+    }
+  ]
+}

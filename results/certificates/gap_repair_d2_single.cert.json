@@ -1,0 +1,36 @@
+{
+  "schema": "DOMINO-AP-TILING-CERT-1.0",
+  "mode": "tile_divisible_vs_tileable_exact",
+  "name": "mode2_gap_d2_single",
+  "length_d": 2,
+  "initial_cells": [
+    0,
+    2,
+    3,
+    5
+  ],
+  "hole_moves": [
+    [
+      1,
+      5
+    ]
+  ],
+  "repaired_cells": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "claimed_initial_quotient": [
+    1,
+    -1,
+    2,
+    -1,
+    1
+  ],
+  "claimed_repaired_quotient": [
+    1,
+    0,
+    1
+  ]
+}
