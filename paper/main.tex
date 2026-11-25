@@ -55,7 +55,7 @@ Identify a finite set $B \subset \ZZ^2$ with $P_B(x_1, x_2) = \sum_{(a_1,a_2)\in
 \end{equation}
 both divisible in $\ZZ[t]$ yet untileable (since $q_0 = 1$ forces $q_0 + q_1 \ge 1 \neq 0$ for any $q_0, q_1 \in \NN$). Moving a single hole by a multiple of~$d$ ($1 \mapsto 5$ for $d=2$; $1 \mapsto 4$ for $d=3$) preserves $h \bmod d$ while eliminating every negative coefficient of~$Q$.
 
-In Step~5 divisibility boosting (Section~2.1), choosing a unimodular basis $(X_1, X_2)$ with $X_1 = v_i$, $\det(X_1, X_2) = 1$, and $v_j = u_1^{(j)} X_1 + u_2^{(j)} X_2$ ($j < i$), any $f$ divisible by $X^{d u^{(j)}} - 1$ ($j < i$) with $X_1^d - 1 \mid (f - F^*)$ is boosted by lifting $\pi(F^*) \bmod (X_1^d - 1)$ to $F$ satisfying
+In Step~5 divisibility boosting (Section~2.1 of~\cite{keevash2026dominoes}), fix a unimodular lattice basis $(e_1, e_2)$ of $\ZZ^2$ with $e_1 = v_i$, $\det(e_1, e_2) = 1$, and express prior directions as $v_j = u_1^{(j)} e_1 + u_2^{(j)} e_2$ ($j < i$). Associating formal Laurent indeterminates $(X_1, X_2)$ to $(e_1, e_2)$ and writing $\pi \colon \ZZ[X_1^{\pm 1}, X_2^{\pm 1}] \to \ZZ[X_1^{\pm 1}, X_2^{\pm 1}]/(X_1^d - 1)$ for reduction modulo $X_1^d - 1$, let $F^* \in \ZZ[X_1^{\pm 1}, X_2^{\pm 1}]$ denote a canonical reduced representative with $X_1$-exponents in $\{0, \dots, d-1\}$ satisfying $(X_1^d - 1) \mid (f - F^*)$. Given $f$ divisible by $X^{d u^{(j)}} - 1$ for all $j < i$, lifting $F^*$ to any $F$ with $\pi(F) = \pi(F^*)$ and $(X^{d u^{(j)}} - 1) \mid F$ ($j < i$) produces the boosted difference $f - F$ satisfying
 \begin{equation}
 \begin{aligned}
   (X_1^d - 1) &\mid (f - F), \\
@@ -65,47 +65,53 @@ In Step~5 divisibility boosting (Section~2.1), choosing a unimodular basis $(X_1
 \end{equation}
 
 \section{Zero-Dependency Lean 4 Kernel}\label{sec:lean}
-We formalize 18 constructive theorems in \texttt{lean/DominoesCommonFigure.lean} (Lean~4.35.0, zero external libraries), audited via \texttt{lean/AuditAxioms.lean} with 0~warnings, 0~\texttt{sorry}, 0~\texttt{Classical.choice}, and 0~\texttt{Lean.ofReduceBool} (Table~\ref{tab:lean}).
+We formalize 18 constructive theorems in \texttt{lean/DominoesCommonFigure.lean} (Lean~4.35.0, zero external libraries), audited via \texttt{lean/AuditAxioms.lean} with 0~warnings, 0~\texttt{sorry}, 0~\texttt{Classical.choice}, and 0~\texttt{Lean.ofReduceBool} (Table~\ref{tab:lean}, which gives the exact Lean~4 statement and axiom footprint of every theorem).
 
 \begin{proposition}[Constructive Domino \& Boosting Kernel]\label{prop:lean}
 \leavevmode
 \begin{enumerate}[leftmargin=*,nosep]
-  \item \emph{Tiling \& preprocessing partitions:} Theorems~1--4 and~16--18 prove $d \mid |B|$, $2{\times}2$ simultaneous tilings, exact bijective residue-class partition $r + jc < cd$ for primitive stretching, consecutive LCM block partitions, Minkowski product and $\mathrm{lcm}(d_1,d_2)$ divisibility, and inductive parallel-line sum conservation.
-  \item \emph{Laurent gap \& hole-move repair:} Theorems~5--12 prove $D_d(1) = d$, $(1-t)D_d(t) = 1-t^d$, domino checkerboard balance, both exact gap witnesses~\eqref{eq:gap} with impossibility of $q_0,q_1 \in \NN$, $(h + rd) \bmod d = h \bmod d$, and single-move repairs for $d=2, 3$.
-  \item \emph{Unimodular basis \& divisibility boosting:} Theorems~13--15 certify exact integer Cramer decomposition $u_1 X_1 + u_2 X_2 = v$ from $\det(X_1, X_2)=1$, simultaneous divisibility boosting~\eqref{eq:boost}, and $\bmod\,(X_1^d - 1)$ lift congruence.
+  \item \emph{Tiling \& preprocessing partitions (Thms.~1--4, 16--18):} Proves $d \mid qd$, disjoint horizontal/vertical tilings of the $2{\times}2$ square, bijective residue-class partition $r + jc < cd$ for primitive stretching, consecutive LCM block partitions $jd + r < qd$, Minkowski product divisibility, $\mathrm{lcm}(d_1,d_2) \mid |B|$, and inductive parallel-line sum conservation \texttt{AllDiv d slices $\to$ d $\mid$ listSumNat slices}.
+  \item \emph{Laurent gap \& hole-move repair (Thms.~5--12):} Defining \texttt{evalAP t d} $= \sum_{j=0}^{d-1} t^j$, proves $D_d(1) = d$, $(1-t)D_d(t) = 1-t^d$, domino checkerboard balance, both exact gap witnesses~\eqref{eq:gap} with $\neg\exists\, q_0,q_1:\NN,\, q_0=1 \land q_0+q_1=0$, $(h + rd) \bmod d = h \bmod d$, and single-move repairs for $d=2, 3$.
+  \item \emph{Unimodular basis \& divisibility boosting (Thms.~13--15):} Certifies exact integer Cramer decomposition $u_1 e_1 + u_2 e_2 = v$ from $\det(e_1, e_2)=1$, simultaneous divisibility boosting~\eqref{eq:boost} via \texttt{Int.dvd\_sub}, and $\bmod\,(X_1^d - 1)$ lift congruence $M\mid(F-F^*) \land M\mid(f-F^*) \to M\mid(f-F)$.
 \end{enumerate}
 \end{proposition}
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
-\caption{Complete 18-theorem Lean~4.35.0 kernel in \texttt{DominoesCommonFigure.lean} (0~\texttt{sorry}, 0~warnings, 0~\texttt{Classical.choice}).}
+\caption{Complete 18-theorem Lean~4.35.0 kernel in \texttt{DominoesCommonFigure.lean} (0~\texttt{sorry}, 0~warnings, 0~\texttt{Classical.choice}), showing exact formalized statements and \texttt{\#print axioms} footprints.}
 \label{tab:lean}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}rll@{}}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}rlll@{}}
 \toprule
-\# & Lean~4 Theorem Identifier & Axiom Footprint \\
+\# & Lean~4 Theorem Identifier & Exact Formalized Statement (Cleared / Inductive Type) & Axioms \\
 \midrule
-1 & \texttt{ap\_tiling\_cardinality\_divisible} & \texttt{none} \\
-2 & \texttt{standard\_2x2\_square\_tiled\_both} & \texttt{none} \\
-3 & \texttt{ap\_primitive\_stretch\_partition} & \texttt{[propext, Quot.sound]} \\
-4 & \texttt{ap\_lcm\_common\_length\_divides} & \texttt{[propext, Quot.sound]} \\
-5 & \texttt{laurent\_ap\_poly\_eval\_one} & \texttt{[propext, Quot.sound]} \\
-6 & \texttt{laurent\_ap\_poly\_times\_diff\_telescope} & \texttt{[propext, Quot.sound]} \\
-7 & \texttt{laurent\_domino\_checkerboard\_balance} & \texttt{[propext]} \\
-8 & \texttt{tile\_divisible\_gap\_witness\_d2} & \texttt{[propext, Quot.sound]} \\
-9 & \texttt{tile\_divisible\_gap\_witness\_d3} & \texttt{[propext, Quot.sound]} \\
-10 & \texttt{hole\_move\_step\_d\_preserves\_mod\_d} & \texttt{[propext]} \\
-11 & \texttt{hole\_move\_repairs\_d2\_gap} & \texttt{[propext, Quot.sound]} \\
-12 & \texttt{hole\_move\_repairs\_d3\_gap} & \texttt{[propext, Quot.sound]} \\
-13 & \texttt{unimodular\_basis\_change\_det\_one} & \texttt{[propext, Quot.sound]} \\
-14 & \texttt{divisibility\_boost\_transitivity} & \texttt{[propext]} \\
-15 & \texttt{mod\_Xd\_minus\_1\_lift\_congruence} & \texttt{[propext, Quot.sound]} \\
-16 & \texttt{minkowski\_product\_tiling\_div} & \texttt{[propext]} \\
-17 & \texttt{common\_figure\_lcm\_divides\_size} & \texttt{[propext, Quot.sound]} \\
-18 & \texttt{line\_partition\_sum\_conservation} & \texttt{[propext]} \\
+1 & \texttt{ap\_tiling\_cardinality\_divisible} & $\forall q, d:\NN,\; d \mid q \cdot d$ & \texttt{none} \\
+2 & \texttt{standard\_2x2\_square\_tiled\_both} & $2{\times}2$ disjoint $(1,0)$ and $(0,1)$ domino covers (\texttt{decide}) & \texttt{none} \\
+3 & \texttt{ap\_primitive\_stretch\_partition} & $r_1,r_2<c, j_1<d \Rightarrow r_1{+}j_1 c < cd \land \text{injective}$ & \texttt{[p, Q]} \\
+4 & \texttt{ap\_lcm\_common\_length\_divides} & $r_1,r_2<d, j_1<q \Rightarrow j_1 d{+}r_1 < qd \land \text{injective}$ & \texttt{[p, Q]} \\
+5 & \texttt{laurent\_ap\_poly\_eval\_one} & $\forall d:\NN,\; \texttt{evalAP}\;1\;d = (d:\ZZ)$ & \texttt{[p, Q]} \\
+6 & \texttt{laurent\_ap\_poly\_times\_diff\_telescope} & $\forall t:\ZZ, d:\NN,\; (1-t)\cdot \texttt{evalAP}\;t\;d = 1 - t^d$ & \texttt{[p, Q]} \\
+7 & \texttt{laurent\_domino\_checkerboard\_balance} & $\forall Q:\ZZ,\; (1 + (-1))\cdot Q = 0$ & \texttt{[p]} \\
+8 & \texttt{tile\_divisible\_gap\_witness\_d2} & $1{+}t^2{+}t^3{+}t^5=(1{+}t)(1{-}t{+}2t^2{-}t^3{+}t^4) \land \neg\exists q_0,q_1:\NN,\,q_0{=}1\land q_0{+}q_1{=}0$ & \texttt{[p, Q]} \\
+9 & \texttt{tile\_divisible\_gap\_witness\_d3} & $1{+}t^2{+}t^4=(1{+}t{+}t^2)(1{-}t{+}t^2) \land \neg\exists q_0,q_1:\NN,\,q_0{=}1\land q_0{+}q_1{=}0$ & \texttt{[p, Q]} \\
+10 & \texttt{hole\_move\_step\_d\_preserves\_mod\_d} & $\forall h,r,d:\NN,\; (h + r\cdot d)\bmod d = h \bmod d$ & \texttt{[p]} \\
+11 & \texttt{hole\_move\_repairs\_d2\_gap} & $\forall t:\ZZ,\; (1{+}t^2{+}t^3{+}t^5) + (t - t^5) = (1{+}t)(1{+}t^2)$ & \texttt{[p, Q]} \\
+12 & \texttt{hole\_move\_repairs\_d3\_gap} & $\forall t:\ZZ,\; (1{+}t^2{+}t^4) + (t - t^4) = 1{+}t{+}t^2$ & \texttt{[p, Q]} \\
+13 & \texttt{unimodular\_basis\_change\_det\_one} & $x_{11}x_{22}-x_{12}x_{21}=1 \Rightarrow u_1 e_1 + u_2 e_2 = v$ (Cramer coords) & \texttt{[p, Q]} \\
+14 & \texttt{divisibility\_boost\_transitivity} & $A\mid f \land A\mid F \land B\mid(f{-}F) \Rightarrow A\mid(f{-}F) \land B\mid(f{-}F)$ & \texttt{[p]} \\
+15 & \texttt{mod\_Xd\_minus\_1\_lift\_congruence} & $M\mid(F{-}F^*) \land M\mid(f{-}F^*) \Rightarrow M\mid(f{-}F)$ & \texttt{[p, Q]} \\
+16 & \texttt{minkowski\_product\_tiling\_div} & $d_1\mid n_1 \land d_2\mid n_2 \Rightarrow d_1\mid n_1 n_2 \land d_2\mid n_1 n_2$ & \texttt{[p]} \\
+17 & \texttt{common\_figure\_lcm\_divides\_size} & $d_1\mid |B| \land d_2\mid |B| \Rightarrow \mathrm{lcm}(d_1,d_2)\mid |B|$ & \texttt{[p, Q]} \\
+18 & \texttt{line\_partition\_sum\_conservation} & $\forall \texttt{slices}:\texttt{List}\;\NN,\; \texttt{AllDiv}\;d\;\texttt{slices} \Rightarrow d\mid \texttt{listSumNat}\;\texttt{slices}$ & \texttt{[p]} \\
 \bottomrule
-\end{tabular}}
-\end{table}
+\end{tabular}
+\vspace{-0.3em}
+\begin{flushleft}
+\tiny Axiom key: \texttt{none} = zero axioms (2); \texttt{[p]} = \texttt{[propext]} (5); \texttt{[p, Q]} = \texttt{[propext, Quot.sound]} (11).
+\end{flushleft}
+\vspace{-0.6em}
+\end{table*}
 
 \section{Exact-Integer Certificate Architecture}\label{sec:certifier}
 The pure-stdlib verifier \texttt{src/domino\_certifier.py} audits \texttt{DOMINO-AP-TILING-CERT-1.0} certificates with zero floating-point arithmetic and strict JSON AST typing (rejecting \texttt{float}, \texttt{bool}, \texttt{Decimal}, \texttt{complex}, tuples, and non-string keys) across four exact modes:
@@ -124,12 +130,12 @@ The pure-stdlib verifier \texttt{src/domino\_certifier.py} audits \texttt{DOMINO
 All 16 canonical certificates and four experiment logs are generated deterministically by \texttt{scripts/run\_all\_experiments.py} and audited end-to-end by \texttt{scripts/verify\_all.py} (Lean~4 build, 18/18 axiom audit, 16/16 cert replay, \texttt{pytest}, and 39/39 SHA-256 hashes).
 
 \paragraph{1. Exact 48-cell $D_4$-symmetric 4-direction Sagdeev figure.}
-By exhaustive $D_4$-orbit search on $[0..9]^2$, we construct an 8-connected (king-connected; four 12-cell 4-connected lobes touching diagonally at corners around a central $2{\times}2$ void and four corner-adjacent voids), $D_4$-symmetric 48-cell common figure simultaneously tiled by 24 dominoes in \emph{each} of the four queen directions $(1,0), (0,1), (1,1), (1,-1)$ (Keevash--Lim Theorem~1.2 places no 4-connectivity requirement on $B \subset \ZZ^2$). Figure~\ref{fig:sagdeev} displays its exact horizontal and diagonal tilings; \texttt{fig\_48cell\_4dir\_sagdeev} verifies all 96 domino placements and all four bivariate Laurent identities $P_{D_i} Q_i = P_B$ in $0.292\,\mathrm{ms}$.
+By exhaustive $D_4$-orbit search on $[0..9]^2$, we construct an 8-connected (king-connected; four color-coded 12-cell 4-connected lobes touching diagonally at corners around a central $2{\times}2$ void $\{4,5\}^2$ and four corner-adjacent voids, with symmetric row sizes $|B_y| = (2,4,4,6,8,8,6,4,4,2)$ summing to $48$), $D_4$-symmetric 48-cell common figure simultaneously tiled by 24 dominoes in \emph{each} of the four queen directions $(1,0), (0,1), (1,1), (1,-1)$ (Keevash--Lim Theorem~1.2 places no 4-connectivity requirement on $B \subset \ZZ^2$). Figure~\ref{fig:sagdeev} displays its exact horizontal and diagonal tilings; \texttt{fig\_48cell\_4dir\_sagdeev} verifies all 96 domino placements and all four bivariate Laurent identities $P_{D_i} Q_i = P_B$ in $0.292\,\mathrm{ms}$.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig1_sagdeev_48cell_figure.png}
-\caption{Exact $D_4$-symmetric 48-cell 4-direction Sagdeev queen-domino figure: (a)~24 disjoint $(1,0)$ tiles; (b)~24 disjoint $(1,1)$ diagonal tiles (vertical and anti-diagonal tilings follow by $D_4$ symmetry and are independently audited).}
+\caption{Exact $D_4$-symmetric 48-cell 4-direction Sagdeev queen-domino figure (four color-coded 12-cell lobes; row sizes $|B_y| = (2,4,4,6,8,8,6,4,4,2)$, total $48$ cells): (a)~24 disjoint $(1,0)$ tiles; (b)~24 disjoint $(1,1)$ diagonal tiles covering every cell (vertical and anti-diagonal tilings follow by $D_4$ symmetry and are independently audited).}
 \label{fig:sagdeev}
 \end{figure}
 
@@ -169,7 +175,7 @@ Certificate File (stem) & Mode & Key Exact Witness & ms \\
 \texttt{gap\_repair\_d2\_single} & M2 & $d=2$: $\min Q: -1 \to 0$ (1 move) & 0.039 \\
 \texttt{gap\_repair\_d3\_single} & M2 & $d=3$: $\min Q: -1 \to 1$ (1 move) & 0.033 \\
 \texttt{gap\_repair\_d2\_double} & M2 & $d=2$: $\min Q: -2 \to 0$ (2 moves) & 0.040 \\
-\texttt{gap\_repair\_d4\_double} & M2 & $d=4$: $\min Q: -1 \to 1$ (1 move) & 0.030 \\
+\texttt{gap\_repair\_d4\_double} & M2 & $d=4$ (2-hole gap): $\min Q: -1 \to 1$ (1 move) & 0.030 \\
 \texttt{boost\_d2\_1prev\_diag} & M3 & $d=2$, 1 prev dir, $|f{-}F|_1=8$ & 0.073 \\
 \texttt{boost\_d3\_1prev\_shear} & M3 & $d=3$, 1 prev dir, $|f{-}F|_1=8$ & 0.069 \\
 \texttt{boost\_d2\_2prev\_queens} & M3 & $d=2$, 2 prev dirs, $|f{-}F|_1=6$ & 0.085 \\

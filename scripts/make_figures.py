@@ -37,39 +37,63 @@ def make_fig1() -> None:
     cells = [tuple(p) for p in d3["cells"]]
     t_h = [tuple(p) for p in d3["tiling_horiz"]]
     t_d = [tuple(p) for p in d3["tiling_diag"]]
+    assert len(cells) == 48 and len(t_h) == 24 and len(t_d) == 24
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 3.1))
+    # Assign each cell to its 12-cell 4-connected lobe (W, E, S, N) for unambiguous visual verification
+    def _lobe_color(x: int, y: int) -> str:
+        if x <= 3 and 3 <= y <= 6:
+            return "#d6eaf8"  # West 12-cell lobe
+        if x >= 6 and 3 <= y <= 6:
+            return "#d5f5e3"  # East 12-cell lobe
+        if y <= 3:
+            return "#fdebd0"  # South 12-cell lobe
+        return "#f5eef8"      # North 12-cell lobe
 
-    # Panel (a): Horizontal (1,0) tiling (24 dominoes)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.2, 3.35))
+
+    # Panel (a): Horizontal (1,0) tiling (24 dominoes across 48 cells)
     for x, y in cells:
-        ax1.add_patch(patches.Rectangle((x, y), 1, 1, facecolor="#d6eaf8", edgecolor="#85929e", linewidth=0.6))
+        ax1.add_patch(patches.Rectangle(
+            (x, y), 1, 1, facecolor=_lobe_color(x, y), edgecolor="#566573", linewidth=0.7
+        ))
     for ox, oy in t_h:
         ax1.add_patch(patches.FancyBboxPatch(
-            (ox + 0.08, oy + 0.12), 1.84, 0.76,
+            (ox + 0.08, oy + 0.14), 1.84, 0.72,
             boxstyle="round,pad=0.02,rounding_size=0.14",
             facecolor="#1f618d", edgecolor="white", linewidth=0.9, alpha=0.88,
         ))
-    ax1.set_xlim(-0.3, 10.3)
-    ax1.set_ylim(-0.3, 10.3)
+    # Annotate exact row cell counts on the right margin (2,4,4,6,8,8,6,4,4,2 -> sum 48)
+    for y_row in range(10):
+        cnt = sum(1 for _, cy in cells if cy == y_row)
+        ax1.text(10.18, y_row + 0.5, f"{cnt}", va="center", ha="left", fontsize=6.6, color="#34495e")
+    ax1.text(10.15, 10.15, r"$|B_y|$", va="bottom", ha="left", fontsize=6.6, color="#34495e", fontweight="bold")
+    ax1.set_xlim(-0.35, 10.85)
+    ax1.set_ylim(-0.35, 10.55)
     ax1.set_aspect("equal")
-    ax1.set_xticks(range(0, 10, 2))
-    ax1.set_yticks(range(0, 10, 2))
-    ax1.set_title("(a) 48-cell Sagdeev figure: 24 (1,0) tiles")
+    ax1.set_xticks(range(0, 10))
+    ax1.set_yticks(range(0, 10))
+    ax1.set_xlabel("x (48 cells = 4 x 12-cell lobes; 24 tiles)")
+    ax1.set_ylabel("y")
+    ax1.set_title("(a) 48-cell D4 Sagdeev figure: 24 (1,0) tiles")
 
-    # Panel (b): Diagonal (1,1) tiling (24 dominoes shown as colored pairs + connecting bars)
+    # Panel (b): Diagonal (1,1) tiling (24 dominoes covering all 48 cells)
     for x, y in cells:
-        ax2.add_patch(patches.Rectangle((x, y), 1, 1, facecolor="#fcf3cf", edgecolor="#85929e", linewidth=0.6))
+        ax2.add_patch(patches.Rectangle(
+            (x, y), 1, 1, facecolor=_lobe_color(x, y), edgecolor="#566573", linewidth=0.7
+        ))
     pal = ["#117a65", "#b7950b", "#a93226", "#2e86c1"]
     for idx, (ox, oy) in enumerate(t_d):
         col = pal[idx % len(pal)]
-        ax2.plot([ox + 0.5, ox + 1.5], [oy + 0.5, oy + 1.5], color=col, linewidth=3.4, solid_capstyle="round")
-        ax2.scatter([ox + 0.5, ox + 1.5], [oy + 0.5, oy + 1.5], color=col, s=20, zorder=5)
-    ax2.set_xlim(-0.3, 10.3)
-    ax2.set_ylim(-0.3, 10.3)
+        ax2.plot([ox + 0.5, ox + 1.5], [oy + 0.5, oy + 1.5], color=col, linewidth=3.2, solid_capstyle="round")
+        ax2.scatter([ox + 0.5, ox + 1.5], [oy + 0.5, oy + 1.5], color=col, s=22, zorder=5)
+    ax2.set_xlim(-0.35, 10.35)
+    ax2.set_ylim(-0.35, 10.55)
     ax2.set_aspect("equal")
-    ax2.set_xticks(range(0, 10, 2))
-    ax2.set_yticks(range(0, 10, 2))
-    ax2.set_title("(b) Same 48 cells: 24 (1,1) diagonal tiles")
+    ax2.set_xticks(range(0, 10))
+    ax2.set_yticks(range(0, 10))
+    ax2.set_xlabel("x (all 48 cells paired by 24 (1,1) tiles)")
+    ax2.set_ylabel("y")
+    ax2.set_title("(b) Exact 24-tile (1,1) diagonal tiling")
 
     fig.tight_layout(pad=0.9)
     fig.savefig(FIG_DIR / "fig1_sagdeev_48cell_figure.png", bbox_inches="tight")
